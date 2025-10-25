@@ -1,10 +1,10 @@
 name: build-_site
 on:
   push:
-    branches: [main]
-    paths-ignore:
-      - '_site/**'
+    branches: [ main ]
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
