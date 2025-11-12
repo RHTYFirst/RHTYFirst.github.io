@@ -82,28 +82,28 @@
   <a style="padding:.5rem .75rem; border:1px solid #ddd; border-radius:8px; text-decoration:none;" href="https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_data/main/building_inventory.csv">The Data</a>
 </div>
 
-<h2 id="plot-1--title">Plot 1 — [Title]</h2>
+<h2 id="plot-1--top-15-agencies-by-total-sq-ft">Plot 1 — Top 15 Agencies by Total Sq Ft</h2>
 <iframe src="/assets/hw5-1/plot1.html" width="100%" height="560" style="border:1px solid #ddd;border-radius:8px;"></iframe>
 
-<p><strong>What it shows.</strong> …<br />
-<strong>Design choices (encodings).</strong> …<br />
-<strong>Color.</strong> …<br />
-<strong>Transformations (Python).</strong> …</p>
+<p><strong>What it shows.</strong> Total square footage by agency; bars are the top 15 agencies by total footprint.<br />
+<strong>Design choices (encodings).</strong> <em>x</em>: total square footage (Q), <em>y</em>: agency (N), sorted descending; bar mark with tooltips.<br />
+<strong>Color.</strong> Single hue to keep focus on ranking and length comparison.<br />
+<strong>Transformations (Python).</strong> Converted types, dropped NAs, aggregated <code class="language-plaintext highlighter-rouge">sum(SQFT)</code> grouped by agency, ranked with a window transform, filtered to <code class="language-plaintext highlighter-rouge">rank ≤ 15</code>.</p>
 
 <hr />
 
-<h2 id="plot-2--title">Plot 2 — [Title]</h2>
-<iframe src="/assets/hw5-1/plot2.html" width="100%" height="520" style="border:1px solid #ddd;border-radius:8px;"></iframe>
+<h2 id="plot-2--buildings-by-year-and-size-interactive">Plot 2 — Buildings by Year and Size (interactive)</h2>
+<iframe src="/assets/hw5-1/plot2.html" width="100%" height="620" style="border:1px solid #ddd;border-radius:8px;"></iframe>
 
-<p><strong>What it shows.</strong> …<br />
-<strong>Design choices (encodings).</strong> …<br />
-<strong>Color.</strong> …<br />
-<strong>Transformations (Python).</strong> …</p>
+<p><strong>What it shows.</strong> Scatter of year constructed (x) vs square footage (y) for all buildings.<br />
+<strong>Design choices (encodings).</strong> Circle mark; background points faint for all buildings; selected agency drawn larger with a black outline; tooltips show agency (and building name if present).<br />
+<strong>Color.</strong> Selected points colored (or by Primary Use if available); background gray to emphasize the selection.<br />
+<strong>Transformations (Python).</strong> Type coercion and NA drop; brushing filters by year; window rank labels the top 5 largest buildings within the selected agency.</p>
 
 <hr />
 
 <h2 id="interactivity">Interactivity</h2>
-<p>I implemented [brush / interactive legend / dropdown / hover] because …</p>
+<p>A dropdown lets you <strong>choose an agency</strong>; those points become large/colored with labels for the <strong>top 5</strong> largest buildings in that selection. A <strong>brush</strong> on the x-axis lets you drag to filter years, which updates the visible points and labels. This combo makes it easy to contrast one agency against the full inventory and to focus on specific eras.</p>
 
 </div>
   </main>
