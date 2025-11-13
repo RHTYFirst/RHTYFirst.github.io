@@ -6,7 +6,7 @@ permalink: /is445/hw5-1/
 
 <div style="margin: 1rem 0; display:flex; gap:.5rem; flex-wrap:wrap;">
   <a style="padding:.5rem .75rem; border:1px solid #ddd; border-radius:8px; text-decoration:none;"
-     href="https://github.com/RHYTFirst/RHYTFirst.github.io/blob/main/hw5_1.ipynb">The Analysis</a>
+     href="https://github.com/RHYTFirst/RHYTFirst.github.io/blob/main/hw5.1.ipynb">The Analysis</a>
   <a style="padding:.5rem .75rem; border:1px solid #ddd; border-radius:8px; text-decoration:none;"
      href="https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_data/main/building_inventory.csv">The Data</a>
 </div>
