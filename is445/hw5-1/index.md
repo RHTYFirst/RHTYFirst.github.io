@@ -14,22 +14,36 @@ permalink: /is445/hw5-1/
 ## Plot 1 — Top 15 Agencies by Total Sq Ft
 <iframe src="{{ site.baseurl }}/assets/hw5-1/plot1.html" width="100%" height="560" style="border:1px solid #ddd;border-radius:8px;"></iframe>
 
-**What it shows.** Total square footage by agency; bars are the top 15 agencies by total footprint.  
-**Design choices (encodings).** *x*: total square footage (Q), *y*: agency (N), sorted descending; bar mark with tooltips.  
-**Color.** Single hue to keep focus on ranking and length comparison.  
-**Transformations (Python).** Converted types, dropped NAs, aggregated `sum(SQFT)` grouped by agency, ranked with a window transform, filtered to `rank ≤ 15`.
+**What it shows.** A horizontal bar chart of the **top 15 agencies** by total building square footage in the dataset. Each bar’s length is the agency’s **sum of square footage** across all of its buildings.
+
+**Design choices (encodings).**  
+- **x (quantitative):** `sum(SQFT)` (Total Square Footage).  
+- **y (nominal):** `Agency` (one bar per agency).  
+- **Sorting:** agencies sorted **descending by x** so the largest agency appears at the top.  
+- **Mark & interaction:** bar mark with tooltips showing agency name and total square footage.
+
+**Color.** Single hue for all bars to keep attention on magnitude and ranking rather than categories.
+
+**Transformations (Python).** Coerced square footage and year to numeric and dropped NAs; aggregated `sum(SQFT)` by agency; computed a rank with a window transform and filtered to `rank ≤ 15`.
 
 ---
 
 ## Plot 2 — Buildings by Year and Size (interactive)
 <iframe src="{{ site.baseurl }}/assets/hw5-1/plot2.html" width="100%" height="620" style="border:1px solid #ddd;border-radius:8px;"></iframe>
 
-**What it shows.** Scatter of year constructed (x) vs square footage (y) for all buildings.  
-**Design choices (encodings).** Circle mark; background points faint for all buildings; selected agency drawn larger with a black outline; tooltips show agency (and building name if present).  
-**Color.** Selected points colored (or by Primary Use if available); background gray to emphasize the selection.  
-**Transformations (Python).** Type coercion and NA drop; brushing filters by year; window rank labels the top 5 largest buildings within the selected agency.  
+**What it shows.** A scatterplot of **year constructed** (x) vs **square footage** (y) for all buildings in the inventory.
+
+**Design choices (encodings).**  
+- **x (quantitative):** `Year Constructed`.  
+- **y (quantitative):** `Square Footage`.  
+- **Mark:** circle. Background points show all buildings faintly; points for the **selected agency** are drawn larger with a black outline.  
+- **Tooltips:** show building name (when available), agency, square footage, and year.
+
+**Color.** Background points are light gray so they fade into the background; points for the selected agency are colored (or colored by Primary Use if that field is available), making the comparison stand out.
+
+**Transformations (Python).** Coerced year and square footage to numeric and dropped NAs; applied a **brush filter on year** to restrict the visible range; used a window transform to rank buildings by size within the selected agency and labeled the **top 5 largest** buildings.
 
 ---
 
 ## Interactivity
-A dropdown lets you **choose an agency**; those points become large/colored with labels for the **top 5** largest buildings in that selection. A **brush** on the x-axis lets you drag to filter years, which updates the visible points and labels. This combo makes it easy to contrast one agency against the full inventory and to focus on specific eras.
+A dropdown lets you **choose an agency**; that agency’s buildings become large, colored points with labels on the **top 5 largest** buildings in the current view. A **brush** on the x-axis lets you drag to filter by construction year, which updates both the visible points and the labels. Together, these interactions make it easy to compare one agency against the full inventory and to focus on specific time periods.
